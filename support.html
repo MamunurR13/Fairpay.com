@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - FairPay</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styles for consistency */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background-color: #002f5d;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .page-header {
+            background-color: #004f9a;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem;
+        }
+
+        .content article {
+            flex: 1 1 calc(33.333% - 2rem);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: white;
+            padding: 1rem;
+        }
+
+        .content article h3 {
+            color: #002f5d;
+        }
+
+        .content article p {
+            margin: 0.5rem 0;
+        }
+
+        .content img {
+            border-radius: 10px;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #002f5d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Pop-up and overlay styles */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        #popup h4 {
+            color: #002f5d;
+            margin-bottom: 1rem;
+        }
+
+        #popup button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #002f5d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <script>
+        function openPopup() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logosandtypes.com/wp-content/uploads/2024/05/fampay.svg" alt="FairPay Logo">
+            <h1>FairPay</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="payslip.html">Payslip</a></li>
+                <li><a href="taxinfo.html">Tax Info</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>We're Here to Help</h2>
+            <p>Find answers or get in touch with our support team for personalized assistance.</p>
+        </section>
+
+        <section class="content">
+            <article>
+                <h3>Frequently Asked Questions</h3>
+                <p>Quick answers to common queries:</p>
+                <ul>
+                    <li>How do I reset my password?</li>
+                    <li>How can I update my tax details?</li>
+                    <li>How do I contact customer support?</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Contact Support</h3>
+                <p>Email us for assistance:</p>
+                <p><strong>Email:</strong> <a href="mailto:support@fairpay.com">support@fairpay.com</a></p>
+                <p>Call us directly:</p>
+                <p><strong>Phone:</strong> +1 (800) 555-0326</p>
+            </article>
+
+            <article>
+                <h3>Live Chat</h3>
+                <p>Chat live with a support agent for real-time assistance:</p>
+                <a href="#" class="button" onclick="openPopup()">Start Live Chat</a>
+            </article>
+        </section>
+    </main>
+
+    <div id="popup">
+        <h4>Live Chat</h4>
+        <p>Hi! How can we assist you today?</p>
+        <textarea rows="5" style="width: 100%; border: 1px solid #ccc; border-radius: 5px; padding: 0.5rem;" placeholder="Type your message..."></textarea>
+        <button onclick="closePopup()">Send Message</button>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <div id="overlay" onclick="closePopup()"></div>
+
+    <footer>
+        <p>&copy; 2025 FairPay. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+

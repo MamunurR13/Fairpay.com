@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - FairPay</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensure consistency with your existing pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background: #002f5d;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .page-header {
+            background: #004f9a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .job-search {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .job-search input {
+            width: 70%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .job-search button {
+            padding: 0.5rem 1rem;
+            background: #002f5d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .job-listings {
+            padding: 1rem 2rem;
+        }
+
+        .job-posting {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .job-posting h4 {
+            margin-top: 0;
+            color: #002f5d;
+        }
+
+        .job-posting .button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #002f5d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        #popup h4 {
+            margin: 0 0 1rem;
+            color: #002f5d;
+        }
+
+        #popup form input, #popup form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #popup button {
+            background: #002f5d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <script>
+        function searchJobs() {
+            const query = document.getElementById("jobSearchInput").value.toLowerCase();
+            const jobs = document.querySelectorAll(".job-posting");
+            jobs.forEach(job => {
+                const title = job.querySelector(".job-title").textContent.toLowerCase();
+                const description = job.querySelector(".job-description").textContent.toLowerCase();
+                if (title.includes(query) || description.includes(query)) {
+                    job.style.display = "block";
+                } else {
+                    job.style.display = "none";
+                }
+            });
+        }
+
+        function openPopup(jobTitle) {
+            document.getElementById("popupJobTitle").textContent = jobTitle;
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logosandtypes.com/wp-content/uploads/2024/05/fampay.svg" alt="FairPay Logo">
+            <h1>FairPay</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="payslip.html">Payslip</a></li>
+                <li><a href="taxinfo.html">Tax Info</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Explore Exciting Career Opportunities</h2>
+            <p>Find the perfect job that matches your skills and aspirations.</p>
+        </section>
+
+        <section class="job-search">
+            <input type="text" id="jobSearchInput" placeholder="Search for jobs by title or description..." />
+            <button onclick="searchJobs()">Search</button>
+        </section>
+
+        <section class="job-listings">
+            <h3>Available Job Postings</h3>
+            
+            <!-- Job Listings -->
+            <div class="job-posting">
+                <h4 class="job-title">Software Engineer</h4>
+                <p class="job-description">Develop cutting-edge software solutions for a fast-paced tech company.</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Salary:</strong> $80,000 - $100,000</p>
+                <a href="#" class="button" onclick="openPopup('Software Engineer')">Apply Now</a>
+            </div>
+
+            <div class="job-posting">
+                <h4 class="job-title">Graphic Designer</h4>
+                <p class="job-description">Design creative visuals and promotional materials.</p>
+                <p><strong>Location:</strong> New York, NY</p>
+                <p><strong>Salary:</strong> $50,000 - $70,000</p>
+                <a href="#" class="button" onclick="openPopup('Graphic Designer')">Apply Now</a>
+            </div>
+
+            <div class="job-posting">
+                <h4 class="job-title">Data Scientist</h4>
+                <p class="job-description">Analyze complex datasets to deliver actionable insights.</p>
+                <p><strong>Location:</strong> San Francisco, CA</p>
+                <p><strong>Salary:</strong> $110,000 - $140,000</p>
+                <a href="#" class="button" onclick="openPopup('Data Scientist')">Apply Now</a>
+            </div>
+
+            <div class="job-posting">
+                <h4 class="job-title">Marketing Manager</h4>
+                <p class="job-description">Lead innovative campaigns to elevate brand awareness.</p>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p><strong>Salary:</strong> $90,000 - $120,000</p>
+                <a href="#" class="button" onclick="openPopup('Marketing Manager')">Apply Now</a>
+            </div>
+
+            <div class="job-posting">
+                <h4 class="job-title">IT Support Specialist</h4>
+                <p class="job-description">Provide technical assistance and ensure smooth IT operations.</p>
+                <p><strong>Location:</strong> Boston, MA</p>
+                <p><strong>Salary:</strong> $60,000 - $75,000</p>
+                <a href="#" class="button" onclick="openPopup('IT Support Specialist')">Apply Now</a>
+            </div>
+
+            <!-- Add more job postings here -->
+
+        </section>
+    </main>
+
+    <div id="popup">
+        <h4>Apply for <span id="popupJobTitle"></span></h4>
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="text" placeholder="Your Phone Number" required />
+            <button type="submit">Submit Application</button>
+        </form>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <div id="overlay" onclick="closePopup()"></div>
+
+    <footer>
+        <p>&copy; 2025 FairPay. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

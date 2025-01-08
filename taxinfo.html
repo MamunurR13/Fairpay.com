@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairPay - Tax Info</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .calculators, .faq {
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 800px;
+        }
+
+        .calculator-tools {
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+        }
+
+        .tool, .calculator {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            text-align: center;
+        }
+
+        .tool h4, .calculator h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        .button, .calculate-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #0077cc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover, .calculate-button:hover {
+            background: #005fa3;
+        }
+
+        .calculator input, .calculator select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .faq ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .faq ul li {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logosandtypes.com/wp-content/uploads/2024/05/fampay.svg" alt="FairPay Logo">
+            <h1>FairPay</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="payslip.html">Payslip</a></li>
+                <li><a href="taxinfo.html">Tax Info</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Stay Ahead with Tax Insights</h2>
+            <p>Understand your tax liabilities and maximize your savings with our tools.</p>
+        </section>
+
+        <section class="calculators">
+            <h3>Tax Calculators</h3>
+            <div class="calculator-tools">
+                <!-- Income Tax Calculator -->
+                <div class="calculator">
+                    <h4>Income Tax Calculator</h4>
+                    <form id="incomeTaxForm">
+                        <label for="income">Annual Income (£):</label>
+                        <input type="number" id="income" name="income" placeholder="e.g., 35000" required>
+                        
+                        <label for="taxRate">Tax Rate (%):</label>
+                        <input type="number" id="taxRate" name="taxRate" placeholder="e.g., 20" required>
+                        
+                        <button type="button" class="calculate-button" onclick="calculateIncomeTax()">Calculate</button>
+                    </form>
+                    <p id="incomeTaxResult" style="margin-top: 1rem;"></p>
+                </div>
+
+                <!-- Tax Deduction Estimator -->
+                <div class="calculator">
+                    <h4>Tax Deduction Estimator</h4>
+                    <form id="deductionForm">
+                        <label for="expenses">Deductible Expenses (£):</label>
+                        <input type="number" id="expenses" name="expenses" placeholder="e.g., 5000" required>
+                        
+                        <label for="deductionRate">Deduction Rate (%):</label>
+                        <input type="number" id="deductionRate" name="deductionRate" placeholder="e.g., 20" required>
+                        
+                        <button type="button" class="calculate-button" onclick="calculateDeductions()">Estimate</button>
+                    </form>
+                    <p id="deductionResult" style="margin-top: 1rem;"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h3>Frequently Asked Questions</h3>
+            <ul>
+                <li><strong>What documents do I need to file taxes?</strong> You’ll need W-2 forms, 1099s, and other income statements.</li>
+                <li><strong>How can I reduce my tax liabilities?</strong> Use deductions, credits, and retirement account contributions.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 FairPay. All Rights Reserved.</p>
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function calculateIncomeTax() {
+            const income = parseFloat(document.getElementById("income").value);
+            const taxRate = parseFloat(document.getElementById("taxRate").value);
+
+            if (!isNaN(income) && !isNaN(taxRate)) {
+                const tax = (income * taxRate) / 100;
+                document.getElementById("incomeTaxResult").textContent = `Your estimated income tax is £${tax.toFixed(2)}.`;
+            } else {
+                alert("Please enter valid numbers for income and tax rate.");
+            }
+        }
+
+        function calculateDeductions() {
+            const expenses = parseFloat(document.getElementById("expenses").value);
+            const deductionRate = parseFloat(document.getElementById("deductionRate").value);
+
+            if (!isNaN(expenses) && !isNaN(deductionRate)) {
+                const deduction = (expenses * deductionRate) / 100;
+                document.getElementById("deductionResult").textContent = `Your estimated tax savings are £${deduction.toFixed(2)}.`;
+            } else {
+                alert("Please enter valid numbers for expenses and deduction rate.");
+            }
+        }
+    </script>
+</body>
+</html>
+

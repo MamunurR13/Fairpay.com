@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights - FairPay</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background: #002f5d;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .page-header, .content, .additional-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .content article, .additional-info {
+            margin: 2rem 0;
+        }
+
+        canvas {
+            margin: 1.5rem auto;
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        footer {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logosandtypes.com/wp-content/uploads/2024/05/fampay.svg" alt="FairPay Logo" style="width: 50px; vertical-align: middle;">
+            <h1 style="display: inline; margin-left: 10px;">FairPay</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="payslip.html">Payslip</a></li>
+                <li><a href="taxinfo.html">Tax Info</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Insights</h2>
+            <p>Unlock valuable insights about your income and financial growth with interactive tools and visual data.</p>
+        </section>
+
+        <section class="content">
+            <!-- Income Growth Section -->
+            <article>
+                <h3>Income Growth Over Time</h3>
+                <p>See how your income has progressed over the last 5 years.</p>
+                <canvas id="incomeGrowthChart"></canvas>
+            </article>
+
+            <!-- Industry Earnings Section -->
+            <article>
+                <h3>Industry Earnings Comparison</h3>
+                <p>Compare your earnings with industry averages to assess your market value and potential opportunities.</p>
+                <canvas id="industryComparisonChart"></canvas>
+            </article>
+
+            <!-- Work-Life Balance Section -->
+            <article>
+                <h3>Work-Life Balance Insights</h3>
+                <p>Analyze how your working hours compare to peers in your field and identify areas for improvement.</p>
+                <canvas id="workLifeBalanceChart"></canvas>
+            </article>
+
+            <!-- Top Employers Section -->
+            <article>
+                <h3>Top Employers for Your Skills</h3>
+                <p>Discover companies that value your skillset and provide better compensation and benefits.</p>
+                <ul>
+                    <li>Company A: Known for great work-life balance.</li>
+                    <li>Company B: Leading in your industry with top salaries.</li>
+                    <li>Company C: Recognized for exceptional employee growth programs.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="additional-info">
+            <h3>Trending Skills in 2025</h3>
+            <p>Explore the most sought-after skills in your industry this year.</p>
+            <ul>
+                <li>Skill 1: Data Analysis</li>
+                <li>Skill 2: Cloud Computing</li>
+                <li>Skill 3: Project Management</li>
+                <li>Skill 4: Creative Problem-Solving</li>
+            </ul>
+            <canvas id="trendingSkillsChart"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FairPay. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Income Growth Chart
+        const incomeGrowthCtx = document.getElementById('incomeGrowthChart').getContext('2d');
+        new Chart(incomeGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Annual Income (£)',
+                    data: [25000, 27000, 30000, 32000, 35000, 37000],
+                    borderColor: '#0077cc',
+                    fill: false
+                }]
+            }
+        });
+
+        // Industry Earnings Comparison Chart
+        const industryComparisonCtx = document.getElementById('industryComparisonChart').getContext('2d');
+        new Chart(industryComparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Your Salary', 'Industry Average', 'Top 10%'],
+                datasets: [{
+                    label: 'Annual Salary (£)',
+                    data: [37000, 40000, 60000],
+                    backgroundColor: ['#0077cc', '#00bfa5', '#f57c00']
+                }]
+            }
+        });
+
+        // Work-Life Balance Chart
+        const workLifeBalanceCtx = document.getElementById('workLifeBalanceChart').getContext('2d');
+        new Chart(workLifeBalanceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Work', 'Personal Time', 'Sleep'],
+                datasets: [{
+                    data: [40, 30, 50],
+                    backgroundColor: ['#0077cc', '#00bfa5', '#f57c00']
+                }]
+            }
+        });
+
+        // Trending Skills Chart
+        const trendingSkillsCtx = document.getElementById('trendingSkillsChart').getContext('2d');
+        new Chart(trendingSkillsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Data Analysis', 'Cloud Computing', 'Project Management', 'Creative Problem-Solving'],
+                datasets: [{
+                    label: 'Skill Demand (2025)',
+                    data: [90, 85, 80, 75],
+                    backgroundColor: 'rgba(0, 119, 204, 0.2)',
+                    borderColor: '#0077cc'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

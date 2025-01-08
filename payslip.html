@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairPay - Payslips</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            alert("You have logged out.");
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logosandtypes.com/wp-content/uploads/2024/05/fampay.svg" alt="FairPay Logo">
+            <h1>FairPay</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="taxinfo.html">Tax Info</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><button onclick="logout()" class="logout-button">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Manage Your Payslips with Ease</h2>
+            <p>Upload, view, and download your payslips anytime from anywhere.</p>
+        </section>
+
+        <section class="upload">
+            <h3>Upload Payslips</h3>
+            <form>
+                <label for="uploadFile">Select Payslip File:</label>
+                <input type="file" id="uploadFile" name="payslip">
+                <button type="submit" class="button">Upload</button>
+            </form>
+        </section>
+
+        <section class="payslip-history">
+            <h3>Your Payslip History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Month</th>
+                        <th>Net Salary</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-01-01</td>
+                        <td>January</td>
+                        <td>£3,000</td>
+                        <td><a href="view-payslip.html">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>2024-12-01</td>
+                        <td>December</td>
+                        <td>£3,950</td>
+                        <td><a href="view-payslip.html">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>2024-11-01</td>
+                        <td>November</td>
+                        <td>£2,900</td>
+                        <td><a href="view-payslip.html">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 FairPay. All Rights Reserved.</p>
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
